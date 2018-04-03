@@ -2,28 +2,23 @@
 
 (function () {
     function Timer() {
-
-
         // Timer.prototype.increment = this.increment.bind(this);
-
+        // Timer.prototype.stoping = this.stoping.bind(this);
         // Timer.prototype.decrement = this.decrement.bind(this);
         // Timer.prototype.increasingValue = this.increasingValue.bind(this);
         this.test = 'creating div-element';
         this.timerid = null;
-        // this.id = counterid++;
-        // Timer.prototype.stoping = this.stoping.bind(this);
-
     }
 
     Timer.prototype.renderTo = function (container) {
-
-        var self = this;
         this.elem = container.appendChild(this.creatingElement('div', 'classDiv'));
         this.elem.appendChild(this.creatingElement('input', 'text'));
         this.elem.appendChild(this.creatingElement('input', 'inc', 'increment', 'button'));
         this.elem.appendChild(this.creatingElement('input', 'dec', 'decrement', 'button'));
         this.elem.appendChild(this.creatingElement('span', 'num', undefined, undefined, '0'));
         this.elem.appendChild(this.creatingElement('input', 'stop', 'stop', 'button'));
+
+        var self = this;
         this.elem.querySelector('.inc').addEventListener('click', function(e){
             self.increment();
         });
@@ -42,16 +37,12 @@
     };
 
     Timer.prototype.creatingElement = function (nameElem, className, value, type, text, id) {
-        // alert(this.test);
         var elem = document.createElement(nameElem);
         elem.className = className;
         elem.type = type || elem.type;
         elem.value = value || elem.value;
         elem.innerText = text || elem.innerText;
         if (id) (elem.id = id);
-        // if (type) {elem.type = type}
-        // if (value) {elem.value = value}
-        // if (text) {elem.innerText = text}
         return elem;
     };
 
@@ -62,7 +53,7 @@
             alert('введите целое не нулевое число и нажмите enter');
             return;
         }
-        // --disabled inputs
+
         input.readOnly = true;
         this.elem.querySelector('.dec').disabled = true;
 
